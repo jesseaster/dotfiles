@@ -1,0 +1,53 @@
+" Undo
+set undodir=~/.vim/undodir
+set undofile
+au BufWritePre /tmp/* setlocal noundofile   " Disable undofile in /tmp
+
+set undolevels =1000 "maximum number of changes that can be undone
+set undoreload =10000 "maximum number lines to save for undo on a buffer reload
+set history=1000                " Lots of history
+set backupdir=~/.vim/tmp,.      " Backup Dir
+set directory=~/.vim/tmp,.      " Swap Dir
+
+set hidden           " allow buffer to be changed without writing to disk
+
+" prevents vim from emulating the original vi's bugs and limitations
+set nocompatible
+
+set number           " show line numbers
+set ruler            " show line numbers
+set nrformats=hex
+
+" Tabbing
+set tabstop=4        " width of a tab character in spaces
+set softtabstop=4    " defines number of spaces for when adding/remving tabs
+set shiftwidth=4     " number of spaces to use for autoindent
+set expandtab        " use spaces instead of tab characters
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2 " for html only 2
+
+" Indention
+" set autoindent
+" set cindent
+
+" Disable annoying features
+set noerrorbells               " Don't beep
+set shortmess+=I               " Disable startup splash
+
+" Search
+set hlsearch    " Highlights all matching search finds
+
+colorscheme peachpuff
+
+" Highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+
+" Display tabs
+" set listchars=tab:».
+" set list
+
+
+"filetype plugin indent on
+"filetype indent plugin on
+
+"au BufRead,BufNewFile *.ino set filetype=c
